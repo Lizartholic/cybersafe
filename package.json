@@ -1,5 +1,28 @@
 {
   "dependencies": {
-    "@supabase/supabase-js": "^2.49.4"
-  }
+    "@supabase/supabase-js": "^2.49.4",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "scripts": {
+    "start": "http-server ./src/js"
+  },
+  "name": "cybersafe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "themetoggle.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lizartholic/cybersafe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Lizartholic/cybersafe/issues"
+  },
+  "homepage": "https://github.com/Lizartholic/cybersafe#readme"
 }

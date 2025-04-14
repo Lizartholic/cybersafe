@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Add progress card
     const card = document.createElement('div');
     card.className = 'progress-card';
-    card.innerHTML = `<strong>${moduleNames[module]}</strong> <span>${score}%</span>`;
+    card.innerHTML = `<strong>${moduleNames[module]}</strong> <span>${score}</span>`;
     progressList.appendChild(card);
 
     // Unlock badge if score >= 75
