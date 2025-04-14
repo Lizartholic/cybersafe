@@ -1,0 +1,186 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Profile</title>
+  <link rel="stylesheet" href="../css/themes.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--text);
+      margin: 0;
+      padding: 2rem;
+      background-color: #e0f2fe;
+    }
+
+    .profile-container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1, h2 {
+      margin-bottom: 1rem;
+    }
+
+    .progress-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      margin: 1rem 0;
+      background: #f0fdf4;
+      border-left: 6px solid #4ade80;
+      border-radius: 12px;
+    }
+
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .badge {
+      background: #e0f2fe;
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .badge:hover {
+      transform: scale(1.05);
+    }
+
+    .badge img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 0.5rem;
+    }
+
+    .home-btn {
+      margin-top: 2rem;
+    }
+
+    .home-btn button {
+      background-color: #7dd3fc;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #1a1a1a;
+      transition: background-color 0.3s ease;
+    }
+
+    .home-btn button:hover {
+      background-color: #38bdf8;
+    }
+
+    /* Leaderboard styles */
+    .leaderboard-section {
+      margin-top: 3rem;
+      background-color: #f0fdf4;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .leaderboard-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .leaderboard-table th, .leaderboard-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    .leaderboard-table th {
+      background-color: #4ade80;
+      color: white;
+    }
+
+    .leaderboard-table tr:hover {
+      background-color: #e0f2fe;
+    }
+
+    .leaderboard-table td {
+      font-weight: bold;
+    }
+
+    .user-rank {
+      color: #ffcc00;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="profile-container">
+    <h1>Welcome, <span id="username">User</span> 👋</h1>
+
+    <h2>🧠 Your Progress</h2>
+    <div id="progress-list">
+      <!-- Game progress will load here -->
+    </div>
+
+    <h2>🏅 Your Badges</h2>
+    <div class="badge-grid" id="badge-list">
+      <div class="badge">
+        <img src="../public/images/badges/phishing.png" alt="Phishing Badge">
+        <p>Phishing Master</p>
+      </div>
+      <div class="badge">
+        <img src="../public/images/badges/password.png" alt="Password Badge">
+        <p>Password Pro</p>
+      </div>
+      <div class="badge">
+        <img src="../public/images/badges/scam.png" alt="Scam Badge">
+        <p>Scam Spotter</p>
+      </div>
+      <div class="badge">
+        <img src="/public/images/badges/masquerade.png" alt="Masquerading Badge">
+        <p>Mask Buster</p>
+      </div>
+    </div>
+
+    <!-- Leaderboard Section -->
+    <div class="leaderboard-section">
+      <h2>🏆 Leaderboard</h2>
+      <table class="leaderboard-table" id="leaderboard">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Username</th>
+            <th>Module</th> <!-- 👈 Added Module column -->
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Leaderboard entries will be dynamically inserted here -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="home-btn">
+      <a href="/src/js/index.html">
+        <button>Back to Home</button>
+      </a>
+    </div>
+  </div>
+
+  <script type="module" src="./js/profile.js"></script>
+  <script type="module" src="./js/leaderboard.js"></script>
+</body>
+</html>

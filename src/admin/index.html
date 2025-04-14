@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/themes.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .dashboard {
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #f0f9ff;
+      border-left: 6px solid #7dd3fc;
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .card h2 {
+      margin: 0.5rem 0;
+      font-size: 2rem;
+    }
+
+    .card p {
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+
+    .section {
+      margin-top: 3rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #e0f2fe;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .back-btn {
+      display: block;
+      margin: 2rem auto 0;
+      padding: 0.75rem 1.5rem;
+      background: #4ade80;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .module-card {
+      background: #ecfdf5;
+      border-left: 6px solid #4ade80;
+      padding: 1rem;
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .module-card h3 {
+      margin-top: 0;
+    }
+
+    .module-card p {
+      font-size: 0.9rem;
+      color: #334155;
+    }
+
+    .module-actions {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .module-actions button {
+      padding: 0.4rem 0.75rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .module-actions .edit {
+      background: #7dd3fc;
+      color: #0c4a6e;
+    }
+
+    .module-actions .delete {
+      background: #fecaca;
+      color: #7f1d1d;
+    }
+
+    .edit-modal {
+      background: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: none;
+    }
+
+    form input, form button {
+      display: block;
+      width: 100%;
+      margin-top: 0.75rem;
+      padding: 0.6rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      background-color: #4ade80;
+      color: white;
+      border: none;
+      font-weight: bold;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+
+    form button[type="button"] {
+      background-color: #f87171;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <h1>📊 Admin Dashboard</h1>
+
+    <div class="stats">
+      <div class="card">
+        <h2 id="user-count">0</h2>
+        <p>Total Users</p>
+      </div>
+      <div class="card">
+        <h2 id="admin-count">0</h2>
+        <p>Admins</p>
+      </div>
+      <div class="card">
+        <h2 id="progress-count">0</h2>
+        <p>Progress Entries</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>👥 Recent Users</h2>
+      <ul id="recent-users"></ul>
+    </div>
+
+    <div class="section">
+      <h2>🏆 Top Scores</h2>
+      <ul id="top-scores"></ul>
+    </div>
+
+    <div class="section">
+      <h2>➕ Add New Game Module</h2>
+      <form id="add-module-form">
+        <input type="text" id="module-title" placeholder="Module Title" required />
+        <input type="text" id="module-description" placeholder="Description" required />
+        <input type="text" id="module-link" placeholder="Module Path (e.g. /modules/my-module/index.html)" required />
+        <input type="text" id="module-icon" placeholder="Icon or Emoji (e.g. 🎯)" />
+        <input type="text" id="module-difficulty" placeholder="Difficulty (Easy, Medium, Hard)" />
+        <button type="submit">Add Module</button>
+      </form>
+    </div>
+
+    <div class="section">
+      <h2>🎮 Existing Modules</h2>
+      <div id="module-list" class="module-grid"></div>
+    </div>
+
+    <div id="edit-modal" class="edit-modal">
+      <h3>Edit Module</h3>
+      <form id="edit-module-form">
+        <input type="hidden" id="edit-id" />
+        <input type="text" id="edit-title" placeholder="Module Title" required />
+        <input type="text" id="edit-description" placeholder="Description" required />
+        <input type="text" id="edit-link" placeholder="Module Path" required />
+        <input type="text" id="edit-icon" placeholder="Icon or Emoji" />
+        <input type="text" id="edit-difficulty" placeholder="Difficulty" />
+        <button type="submit">Save Changes</button>
+        <button type="button" id="cancel-edit">Cancel</button>
+      </form>
+    </div>
+
+    <button class="back-btn" onclick="window.location.href='/src/js/index.html'">🏠 Back to Home</button>
+  </div>
+
+  <script type="module" src="../js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+/* You may already have some of this in your themes.css, so feel free to adjust as needed */
+body {
+    background-color: #f7fafc;
+    color: #333;
+  }
+  
+  .admin-container {
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card {
+    background: #f0fdf4;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card h2 {
+    color: #38b2ac;
+    font-size: 1.6rem;
+  }
+  
+  .action-btn {
+    font-size: 1.2rem;
+    padding: 1rem;
+    background-color: #38b2ac;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .action-btn:hover {
+    background-color: #319795;
+  }
+  

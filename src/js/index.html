@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Liz Muthoni" />
+  <meta name="description" content="Gamified approach to cyber hygiene" />
+  <title>CyberSafe</title>
+  <link rel="icon" href="../public/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/modules.css" />
+  <script defer type="module" src="js/theme.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      margin-bottom: 2rem;
+      color: #6b7280;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #6b7280;
+    }
+
+    .card i {
+      font-size: 3rem;
+      color: #4ade80;
+      margin-bottom: 1rem;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .card:hover i {
+      color: #38bdf8;
+    }
+
+    .auth-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .primary {
+      background: #4ade80;
+      color: white;
+    }
+
+    .secondary {
+      background: #7dd3fc;
+      color: black;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #fff;
+      border: none;
+      border-radius: 50%;
+      padding: 0.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-size: 1.25rem;
+    }
+
+    .theme-toggle i {
+      color: var(--primary);
+    }
+  </style>
+</head>
+
+<body class="light" style="background-image: url('greenphoto.png');">
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" id="theme-toggle">
+    <i class="fas fa-moon"></i>  <!-- FontAwesome Moon icon -->
+  </button>
+
+  <main class="container">
+    <h1 class="title">Welcome to Cyber Hygiene Game!</h1>
+    <p class="subtitle"> <strong>A gamified approach to learn cyber safety. Start playing below!</strong></p>
+
+    <!-- Static Module Grid (Cards for each game module) -->
+    <div class="module-grid">
+      <a href="/src/modules/phishing/index.html" class="card">
+        <i class="fas fa-fish"></i> <!-- Phishing Icon -->
+        <h2>🎣 Phishing Frenzy</h2>
+        <p>Spot suspicious emails and links!</p>
+      </a>
+
+      <a href="/src/modules/password/index.html" class="card">
+        <i class="fas fa-lock"></i> <!-- Password Icon -->
+        <h2>🔐 Password Challenge</h2>
+        <p>Create and protect strong passwords.</p>
+      </a>
+
+      <a href="/src/modules/spot-the-scam/index.html" class="card">
+        <i class="fas fa-search"></i> <!-- Search Icon -->
+        <h2>🕵️ Spot the Scam</h2>
+        <p>Detect common online scams.</p>
+      </a>
+
+      <a href="/src/modules/masquerading/index.html" class="card">
+        <i class="fas fa-mask"></i> <!-- Masquerade Icon -->
+        <h2>🎭 Masquerading</h2>
+        <p>Learn how attackers impersonate others.</p>
+      </a>
+    </div>
+
+    <!-- Dynamically Loaded Modules (Will be appended by JavaScript) -->
+    <div class="module-grid" id="dynamic-module-grid">
+      <!-- Dynamic content will be inserted here -->
+    </div>
+
+    <div class="auth-container">
+      <a href="signup.html"><button class="btn primary">Sign Up</button></a>
+      <a href="login.html"><button class="btn secondary">Login</button></a>
+    </div>
+  </main>
+
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/home.js"></script>  <!-- Add the JS script that handles dynamic modules -->
+  
+  <!-- Add FontAwesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

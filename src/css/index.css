@@ -1,0 +1,87 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  h1, h2, p {
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  }
+  
+  button {
+    background-color: #80e0d8; /* Light Green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #61c8ad; /* Darker Green */
+  }
+  
+  /* Style the admin panel table */
+  table {
+    width: 80%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    border-radius: 8px;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #a0d8e6; /* Light Blue */
+    color: #333;
+  }
+  
+  td {
+    background-color: #e0f7fa; /* Light Blue Tint */
+  }
+  
+  button.make-admin-btn, button.delete-user-btn {
+    background-color: #81c5e3; /* Light Blue */
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.make-admin-btn:hover, button.delete-user-btn:hover {
+    background-color: #64a3c6; /* Darker Blue */
+  }
+  
+
+  @media screen and (max-width: 768px) {
+    body {
+      padding: 20px;
+    }
+  
+    table {
+      width: 100%;
+    }
+  }
+  

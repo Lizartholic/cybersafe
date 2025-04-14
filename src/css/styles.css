@@ -1,0 +1,11 @@
+:root {
+    --primary: #2E8B57; /* Green */
+    --secondary: #4682B4; /* Blue */
+    --text: #333;
+    --bg: #f5f5f5;
+  }
+  
+  [data-theme="dark"] {
+    --text: #f5f5f5;
+    --bg: #121212;
+  }
