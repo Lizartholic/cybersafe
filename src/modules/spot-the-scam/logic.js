@@ -2,19 +2,19 @@ import { supabase } from '../../js/supabase.js';
 
 const challenges = [
   {
-    question: "Is this advertisement legitimate?",
+    question: "Is this subscription message legitimate?",
     image: "/public/images/scam1.jpg",
     options: ["Yes", "No"],
     correct: "No"
   },
   {
-    question: "Is this offer too good to be true?",
+    question: "would you trust this ?",
     image: "/public/images/scam2.jpg",
     options: ["Yes", "No"],
     correct: "Yes"
   },
   {
-    question: "Does this website look genuine?",
+    question: "Does this message look genuine?",
     image: "/public/images/scam3.jpg",
     options: ["Yes", "No"],
     correct: "No"
